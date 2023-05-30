@@ -73,8 +73,8 @@ def train(hparams):
                 loss.backward()
                 # update model's weight
                 optim.step()
-                predict_train_result.append(predict_train_hr)
-                gt_hr_train.append(batch_train_hr)
+                predict_train_result.append(predict_train_hr.detach().cpu().numpy())
+                gt_hr_train.append(batch_train_hr.detach().cpu().numpy())
 
             avg_train_loss = total_train_loss / len(train_data)
             metrics['train_loss'].append(avg_train_loss)
