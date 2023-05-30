@@ -71,13 +71,15 @@ class VCTKData(Dataset):
         for path in x_dir_path.iterdir():
             if path.is_dir():
                 for audio in path.iterdir():
-                    self.audio_x_path.append(audio)
+                    if audio.suffix == '.wav':
+                        self.audio_x_path.append(audio)
 
         # load target audio path
         for path in y_dir_path.iterdir():
             if path.is_dir():
                 for audio in path.iterdir():
-                    self.audio_y_path.append(audio)
+                    if audio.suffix == '.wav':
+                        self.audio_y_path.append(audio)
         
     def __len__(self):
         return len(self.audio_x_path)
