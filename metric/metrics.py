@@ -5,7 +5,7 @@ def AvgPSNR(predict_hr, gt_hr):
     avg_psnr = 0
     for idx in range(num_clips):
         psnr = PSNR(predict_hr[idx], gt_hr[idx])
-        avg_psnr = psnr / num_clips
+        avg_psnr += psnr / num_clips
     return avg_psnr
 
 def PSNR(one_predict_hr, one_gt_hr):
